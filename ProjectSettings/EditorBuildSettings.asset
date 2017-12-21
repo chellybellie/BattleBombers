@@ -10,9 +10,12 @@ EditorBuildSettings:
     guid: 0b2929087c26dc04a9b9abaddc28aa27
   - enabled: 1
     path: Assets/Ginger/lobby.unity
+    guid: be14ac96880d8a947ab613fe7fb7357f
+  - enabled: 0
+    path: Assets/__DELETED_GUID_Trash/35b82359f2212bb459e34f6671123d78
     guid: 35b82359f2212bb459e34f6671123d78
-  - enabled: 1
-    path: Assets/Map.unity
+  - enabled: 0
+    path: 
     guid: 1335bfae931d15e4ab368244848e58d3
   - enabled: 1
     path: Assets/MoveTestScene.unity

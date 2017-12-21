@@ -350,6 +350,13 @@ namespace Prototype.NetworkLobby
 				StartCoroutine(ServerCountdownCoroutine());
         }
 
+        public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
+        {
+            base.OnServerAddPlayer(conn, playerControllerId);
+
+            Debug.Log("PLAYER CONNECTED!");
+        }
+
         public IEnumerator ServerCountdownCoroutine()
         {
             float remainingTime = prematchCountdown;
