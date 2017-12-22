@@ -219,13 +219,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 335454855}
-  m_LocalRotation: {x: 0.3872094, y: -0, z: -0, w: 0.9219918}
-  m_LocalPosition: {x: 8.44, y: 8.36, z: -20.74}
+  m_LocalRotation: {x: 0.6176133, y: -0, z: -0, w: 0.786482}
+  m_LocalPosition: {x: 9.11, y: 14.68, z: -13.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 45.562, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 76.284004, y: 0, z: 0}
 --- !u!1 &594141846
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,11 +500,6 @@ MonoBehaviour:
   breakObj: {fileID: 1172540338017252, guid: 8b570c6354ecfb24cb9c5b9e3080e600, type: 2}
   pos: {x: 0, y: 0, z: 0}
   playerCount: 0
-  players:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &1726631004
 MonoBehaviour:
   m_ObjectHideFlags: 0
