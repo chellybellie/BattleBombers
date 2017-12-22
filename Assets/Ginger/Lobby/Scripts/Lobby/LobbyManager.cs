@@ -350,8 +350,8 @@ namespace Prototype.NetworkLobby
         public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
         {
             base.OnServerAddPlayer(conn, playerControllerId);
+            Debug.Log("ADDED THE PLAYERRRR!");
 
-            Debug.Log("PLAYER CONNECTED!");
         }
 
         public IEnumerator ServerCountdownCoroutine()

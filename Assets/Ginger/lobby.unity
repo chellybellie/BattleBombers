@@ -3623,10 +3623,10 @@ MonoBehaviour:
   m_MinPlayers: 2
   m_LobbyPlayerPrefab: {fileID: 11487034, guid: ad727d7e1462ecc4f83c898ecc501997,
     type: 2}
-  m_GamePlayerPrefab: {fileID: 1115779405439792, guid: 8ceae305fc2b7224bb8aa1b7b5bdca75,
+  m_GamePlayerPrefab: {fileID: 1565832954250286, guid: 41dd9850af84d8347a4c0fe986a15a73,
     type: 2}
   m_LobbyScene: lobby
-  m_PlayScene: MoveTestScene
+  m_PlayScene: NeoMoveTest
   lobbySlots: []
   prematchCountdown: 3
   topPanel: {fileID: 1954220720}
