@@ -11,8 +11,12 @@ public class gridGeneratorScript : NetworkBehaviour
     public GameObject wallObj;
     public GameObject breakObj;
 
-    public Vector3 pos;
+    int currentPlayerCounter
+    { get { return NetworkManager.singleton.numPlayers; } }
 
+    public Vector3 pos;
+    public int playerCount = 0;
+    public moveGridScript[] players = new moveGridScript[4];
     public struct Node
     {
         public Vector2 gridPos;
@@ -23,8 +27,12 @@ public class gridGeneratorScript : NetworkBehaviour
 
     public Node[,] mapGrid = new Node[19, 19];
 
-    //[SyncVar(hook = "UpdatePlayers")] 
-    public Vector3[] playerPositions = new Vector3[4];
+    //[SyncVar(hook = "UpdatePlayers")] public Vector2[] playerPositions = new Vector2[4];
+    public class SyncListVector2 : SyncListStruct<Vector2>
+    {
+
+    }
+    public SyncListVector2 playerPositions = new SyncListVector2();
 
     void Start()
     {
@@ -33,19 +41,45 @@ public class gridGeneratorScript : NetworkBehaviour
 
         pos = transform.position;
         GridGeneration(length, cellSpacing);
+
+        //playerPositions.Callback += UpdatePlayers;
     }
 
     // Update is called once per frame
     void Update()
     {
+        for(int i = 0; i < 4; i++)
+        {
+            players[i].MovePlayer(mapGrid[(int)(playerPositions[i].x), (int)(playerPositions[i].y)].pos);
+        }
         
     }
 
-    //void UpdatePlayers()
+    //void UpdatePlayers(SyncListStruct<Vector2>.Operation p, int index)
     //{
+    //    switch (p)
+    //    {
+    //        case SyncList<Vector2>.Operation.OP_ADD:
 
+    //            break;
+    //        case SyncList<Vector2>.Operation.OP_CLEAR:
+    //            break;
+    //        case SyncList<Vector2>.Operation.OP_INSERT:
+    //            break;
+    //        case SyncList<Vector2>.Operation.OP_REMOVE:
+    //            break;
+    //        case SyncList<Vector2>.Operation.OP_REMOVEAT:
+    //            break;
+    //        case SyncList<Vector2>.Operation.OP_SET:
+    //            break;
+    //        case SyncList<Vector2>.Operation.OP_DIRTY:
+    //            players[i].MovePlayer(mapGrid[(int)(playerPositions[i].x), (int)(playerPositions[i].y)].pos);
+    //            break;
+    //        default:
+    //            break;
+    //    }
     //}
- 
+
 
     void GridGeneration(int len, float cSpace)
     {
@@ -60,11 +94,13 @@ public class gridGeneratorScript : NetworkBehaviour
 
                 if (mapGrid[x, y].isWall)
                 {
-                    Instantiate(wallObj, mapGrid[x, y].pos, Quaternion.identity);
+                    GameObject obj = Instantiate(wallObj, mapGrid[x, y].pos, Quaternion.identity);
+                    NetworkServer.Spawn(obj);
                 }
                 if (mapGrid[x, y].breakWall)
                 {
-                    Instantiate(breakObj, mapGrid[x, y].pos, Quaternion.identity);
+                    GameObject brk = Instantiate(breakObj, mapGrid[x, y].pos, Quaternion.identity);
+                    NetworkServer.Spawn(brk);
                 }
             }
         }
