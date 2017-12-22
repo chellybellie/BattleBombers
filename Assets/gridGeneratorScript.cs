@@ -14,6 +14,8 @@ public class gridGeneratorScript : NetworkBehaviour
     int currentPlayerCounter
     { get { return NetworkManager.singleton.numPlayers; } }
 
+    public static gridGeneratorScript instance;
+
     public Vector3 pos;
     public int playerCount = 0;
     public moveGridScript[] players = new moveGridScript[4];
@@ -34,6 +36,12 @@ public class gridGeneratorScript : NetworkBehaviour
     }
     public SyncListVector2 playerPositions = new SyncListVector2();
 
+    void Awake()
+    {
+        if (instance != null) { Destroy(instance); }
+        else { instance = this; }
+    }
+
     void Start()
     {
         cellSpacing = testBlock.GetComponent<Renderer>().bounds.size.x;
@@ -52,7 +60,6 @@ public class gridGeneratorScript : NetworkBehaviour
         {
             players[i].MovePlayer(mapGrid[(int)(playerPositions[i].x), (int)(playerPositions[i].y)].pos);
         }
-        
     }
 
     //void UpdatePlayers(SyncListStruct<Vector2>.Operation p, int index)
@@ -96,11 +103,13 @@ public class gridGeneratorScript : NetworkBehaviour
                 {
                     GameObject obj = Instantiate(wallObj, mapGrid[x, y].pos, Quaternion.identity);
                     NetworkServer.Spawn(obj);
+                    //Debug.Log("yee boi");
                 }
                 if (mapGrid[x, y].breakWall)
                 {
                     GameObject brk = Instantiate(breakObj, mapGrid[x, y].pos, Quaternion.identity);
                     NetworkServer.Spawn(brk);
+                    //Debug.Log("break wall boi");
                 }
             }
         }

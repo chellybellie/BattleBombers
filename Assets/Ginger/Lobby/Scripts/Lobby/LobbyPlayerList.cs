@@ -14,6 +14,8 @@ namespace Prototype.NetworkLobby
         public GameObject warningDirectPlayServer;
         public Transform addButtonRow;
 
+        public playerCounterScript counter;
+
         protected VerticalLayoutGroup _layout;
         protected List<LobbyPlayer> _players = new List<LobbyPlayer>();
 
@@ -21,6 +23,7 @@ namespace Prototype.NetworkLobby
         {
             _instance = this;
             _layout = playerListContentTransform.GetComponent<VerticalLayoutGroup>();
+            counter = gameObject.GetComponent<playerCounterScript>();
         }
 
         public void DisplayDirectServerWarning(bool enabled)
@@ -42,7 +45,6 @@ namespace Prototype.NetworkLobby
         {
             if (_players.Contains(player))
                 return;
-
             _players.Add(player);
 
             player.transform.SetParent(playerListContentTransform, false);
