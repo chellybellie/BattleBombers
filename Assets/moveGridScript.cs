@@ -59,7 +59,7 @@ public class moveGridScript : NetworkBehaviour {
                 grid.playerPositions[playerID] = grid.mapGrid[(int)(grid.playerPositions[playerID].x), (int)(grid.playerPositions[playerID].y + 1)].gridPos;
             }
         }
-    }
+    }/// hello u guys love u brats 
 
     
 }
