@@ -13,6 +13,8 @@ public class GridPlayerMovement : NetworkBehaviour
         public bool rightKey;
         public bool upKey;
         public bool downKey;
+
+        public bool dropKey;
     }
 
     void Start()
@@ -67,6 +69,8 @@ public class GridPlayerMovement : NetworkBehaviour
         inputs.rightKey = Input.GetKeyDown(KeyCode.D);
         inputs.upKey = Input.GetKeyDown(KeyCode.W);
         inputs.downKey = Input.GetKeyDown(KeyCode.S);
+
+        inputs.dropKey = Input.GetKeyDown(KeyCode.B);
 
         CmdProcessInput(inputs);
     }
